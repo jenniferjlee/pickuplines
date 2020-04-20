@@ -1,24 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Category from './Category.jsx';
+import Display from './Display.jsx';
+import Add from './Add.jsx';
 
+// serves as parent component that passes information between the cateogry and display components
 function App() {
+  // state contains which categories are checked off and whether the add form should be displayed
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1> Find Your Next Pickup Line! </h1>
     </div>
   );
 }
