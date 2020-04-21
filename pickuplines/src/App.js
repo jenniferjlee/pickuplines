@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <h1> Find Your Next Pickup Line! </h1>
-
+      <Category></Category>
       <Add></Add>
     </div>
   );
