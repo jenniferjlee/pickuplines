@@ -4,9 +4,8 @@ import './Category.css';
 // do individual checkbox magic here
 export default function Category({ lines, callback }) {
   // GET list of all available categories using the data provided and tags = ...
-  const tags = ['animals', 'food', 'places', 'names'];
+  const tags = ['food', 'music', 'cringy'];
   const allUnchecked = [];
-  console.log(tags.length);
   for (var i = 0; i < tags.length; i++) allUnchecked.push(false);
   const [checked, setChecked] = useState(allUnchecked);
 

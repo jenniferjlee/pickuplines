@@ -43,7 +43,7 @@ function App() {
       {!add &&
         <>
           <Category lines={LINES} callback={selected => setSelected(selected)} />
-          <Display selected={selected} />
+          <Display selected={selected} lines={LINES} />
           <button onClick={showAdd} >
             Add a Pickup Line
       </button>
