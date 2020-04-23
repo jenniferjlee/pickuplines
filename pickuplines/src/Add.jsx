@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 
 export default function Add(props) {
 
-  const [pickupline, setPickupline] = useState(''); 
+  const [pickupline, setPickupline] = useState('');
 
   const add = (event) => {
     alert(pickupline + ' was added');
-    setPickupline('')
+    setPickupline('');
   };
 
   const changeDesc = (event) => {
@@ -26,7 +26,7 @@ export default function Add(props) {
         onChange={changeDesc}
       />
 
-      <button onClick={add} > 
+      <button onClick={add} >
         Submit
       </button>
 
