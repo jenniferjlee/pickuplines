@@ -2,28 +2,40 @@ import React, { useState } from 'react';
 import './Category.css';
 
 // do individual checkbox magic here
-export default function Category({ lines }) {
+export default function Category({ lines, callback }) {
+  // GET list of all available categories using the data provided and tags = ...
+  const tags = ['animals', 'food', 'places', 'names'];
+  const allUnchecked = [];
+  console.log(tags.length);
+  for (var i = 0; i < tags.length; i++) allUnchecked.push(false);
+  const [checked, setChecked] = useState(allUnchecked);
 
-  const [tags, setTags] = useState(['animals', 'food', 'places', 'names']);
+  function changeCheck(check, index, i) {
+    if (index === i) { return !check } else { return check };
+  }
 
-  const removeTag = (i) => {
-    const newTags = tags.filter((tag, index) => index !== i);
-    setTags(newTags)
+  const handleChange = (i) => {
+    const newChecks = checked.map((check, index) => changeCheck(check, index, i));
+    setChecked(newChecks);
+    // callback
+    callback(tags.filter((tag, i) => checked[i]));
   };
 
   return (
     <div>
-      <ul id="cat_tags">
+      <div id="cat_tags">
         {
+          //functional programming
           tags.map((tag, i) => (
-            <li key={tag}>
-              {tag}
-              <button type="button" onClick={() => removeTag(i)}>Remove</button>
+            <>
+              <input type="checkbox" id={tag} name={tag} value={tag} onChange={() => handleChange(i)} />
+              <label for={tag}> {tag} </label>
+              {/*<button type="button" onClick={() => removeTag(i)}>Remove</button> */}
               {/* onClick={removeTag(i)} doesnt work */}
-            </li>
+            </>
           ))
         }
-      </ul>
+      </div>
     </div>
   );
 }

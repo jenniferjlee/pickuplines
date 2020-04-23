@@ -35,19 +35,20 @@ function App() {
   const showAdd = (event) => {
     setAdd(true);
   };
+
   return (
     <div className="App">
       <h1> Find Your Next Pickup Line! </h1>
       {/* conditional rendering */}
       {!add &&
         <>
-          <Category lines={LINES} />
+          <Category lines={LINES} callback={selected => setSelected(selected)} />
           <Display selected={selected} />
           <button onClick={showAdd} >
             Add a Pickup Line
       </button>
         </>}
-      {add && <Add lines={LINES} />}
+      {add && <Add lines={LINES} callback={() => setAdd(false)} />}
     </div>
   );
 }

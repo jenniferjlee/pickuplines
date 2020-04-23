@@ -3,14 +3,17 @@ import Category from './Category.jsx';
 
 // Add Component: contains input box for text as well as categories to check off and add button
 
-export default function Add({ lines }) {
+export default function Add({ lines, callback }) {
 
   const [pickupline, setPickupline] = useState('');
+  const [selected, setSelected] = useState([]);
 
   const add = (event) => {
     alert(pickupline + ' was added');
     setPickupline('');
     // post to firebase
+    // go back to display
+    callback(false);
   };
 
   const changeDesc = (event) => {
@@ -29,7 +32,7 @@ export default function Add({ lines }) {
         onChange={changeDesc}
       />
 
-      <Category lines={lines} />
+      <Category lines={lines} callback={selected => setSelected(selected)} />
 
       <button onClick={add} >
         Submit
