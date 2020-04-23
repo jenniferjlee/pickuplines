@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Category.css';
 
 // do individual checkbox magic here
-export default function Cateogry({ lines }) {
+export default function Category({ lines }) {
 
   const [tags, setTags] = useState(['animals', 'food', 'places', 'names']);
 

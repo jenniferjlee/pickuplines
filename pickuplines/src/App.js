@@ -29,20 +29,25 @@ const LINES = [
 // serves as parent component that passes information between the cateogry and display components
 function App() {
   // state contains which categories are checked off and whether the add form should be displayed
-  const [addDisplay, setAddDisplay] = useState(false);
+  const [add, setAdd] = useState(false);
+  const [selected, setSelected] = useState([]);
 
-  const add = (event) => {
-    setAddDisplay(true);
+  const showAdd = (event) => {
+    setAdd(true);
   };
   return (
     <div className="App">
       <h1> Find Your Next Pickup Line! </h1>
-      <Category lines={LINES} />
       {/* conditional rendering */}
-      {!addDisplay && <button onClick={add} >
-        +
-      </button>}
-      {addDisplay && <Add />}
+      {!add &&
+        <>
+          <Category lines={LINES} />
+          <Display selected={selected} />
+          <button onClick={showAdd} >
+            Add a Pickup Line
+      </button>
+        </>}
+      {add && <Add lines={LINES} />}
     </div>
   );
 }
