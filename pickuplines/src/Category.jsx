@@ -14,6 +14,7 @@ export default function Category({ lines, callback }) {
   }
 
   const handleChange = (i) => {
+    console.log('tag:' + tags[i])
     const newChecks = checked.map((check, index) => changeCheck(check, index, i));
     setChecked(newChecks);
     // callback

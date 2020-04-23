@@ -34,6 +34,7 @@ function App() {
 
   const showAdd = (event) => {
     setAdd(true);
+    console.log("setAdd to true")
   };
 
   return (
@@ -46,7 +47,7 @@ function App() {
           <Display selected={selected} lines={LINES} />
           <button onClick={showAdd} >
             Add a Pickup Line
-      </button>
+          </button>
         </>}
       {add && <Add lines={LINES} callback={() => setAdd(false)} />}
     </div>
