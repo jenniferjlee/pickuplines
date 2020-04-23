@@ -6,3 +6,8 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+
+label{
+  color: #190E4F;
+  font-weight: bold;
+}

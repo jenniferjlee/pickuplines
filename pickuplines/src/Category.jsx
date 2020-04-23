@@ -17,8 +17,10 @@ export default function Category({ lines, callback }) {
     console.log('tag:' + tags[i])
     const newChecks = checked.map((check, index) => changeCheck(check, index, i));
     setChecked(newChecks);
+    // FIX: checked doesn't get updated, why? so temp, using newChecks
+    console.log('checked: ' + checked);
     // callback
-    callback(tags.filter((tag, i) => checked[i]));
+    callback(tags.filter((tag, i) => newChecks[i]));
   };
 
   return (

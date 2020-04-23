@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Karla', sans-serif;
 }
 
 .App-logo {
@@ -35,4 +36,38 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+#button{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'Karla', sans-serif;
+  font-size: medium;
+  background-color: #EA9AB2; 
+}
+
+#button:hover {
+  background-color:#c73c66; 
+  color: white;
+}
+
+#add_button{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'Karla', sans-serif;
+  font-size: medium;
+  background-color: #B3DEE2;
+}
+
+#add_button:hover {
+  background-color: #82b3b8;
+  color: white;
+}
+
+#line{
+  font-size: xx-large;
+}
+
+h1 {
+  color:#DE6C83;
 }

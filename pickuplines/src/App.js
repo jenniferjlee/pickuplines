@@ -39,13 +39,17 @@ function App() {
 
   return (
     <div className="App">
-      <h1> Find Your Next Pickup Line! </h1>
+      <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"></link>
+      <h1> <span role="img" aria-label="heart"> 💘 </span> 
+      Find Your Next Pickup Line! 
+      <span role="img" aria-label="heart"> 💘 </span> </h1>
+      
       {/* conditional rendering */}
       {!add &&
         <>
           <Category lines={LINES} callback={selected => setSelected(selected)} />
-          <Display selected={selected} lines={LINES} />
-          <button onClick={showAdd} >
+          <Display selected={selected} lines={LINES}/>
+          <button onClick={showAdd} id="add_button">
             Add a Pickup Line
           </button>
         </>}

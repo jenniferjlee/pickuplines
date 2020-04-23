@@ -34,7 +34,7 @@ export default function Add({ lines, callback }) {
 
       <Category lines={lines} callback={selected => setSelected(selected)} />
 
-      <button onClick={add} >
+      <button onClick={add} id="button">
         Submit
       </button>
 
