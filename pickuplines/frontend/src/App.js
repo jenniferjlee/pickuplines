@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Category from './Category.jsx';
 import Display from './Display.jsx';
@@ -6,24 +6,34 @@ import Add from './Add.jsx';
 
 
 // would normally get data from backend here
-const LINES = [
-  {
-    category: 'food',
-    line: "Baby, if you were a fruit you'd be a Fineapple."
-  },
-  {
-    category: 'food',
-    line: "Your name must be Coca Cola, because you're so-da-licious"
-  },
-  {
-    category: 'music',
-    line: 'You had me at cello.'
-  },
-  {
-    category: 'cringy',
-    line: "Do you have a map? I just keep getting lost in your eyes."
-  }
-];
+// const LINES = [
+//   {
+//     category: 'food',
+//     line: "Baby, if you were a fruit you'd be a Fineapple."
+//   },
+//   {
+//     category: 'food',
+//     line: "Your name must be Coca Cola, because you're so-da-licious"
+//   },
+//   {
+//     category: 'music',
+//     line: 'You had me at cello.'
+//   },
+//   {
+//     category: 'cringy',
+//     line: "Do you have a map? I just keep getting lost in your eyes."
+//   }
+// ];
+
+const [pickupLines, setPickupLines] = useState([]);
+
+const fetchLines = () => {
+  fetch('/getLines')
+    .then(res => res.json())
+    .then(json => setPickupLines(json));
+}
+useEffect(() => fetchLines(), []);
+
 
 
 // serves as parent component that passes information between the cateogry and display components
@@ -47,13 +57,13 @@ function App() {
       {/* conditional rendering */}
       {!add &&
         <>
-          <Category lines={LINES} callback={selected => setSelected(selected)} />
-          <Display selected={selected} lines={LINES}/>
+          <Category lines={pickupLines} callback={selected => setSelected(selected)} />
+          <Display selected={selected} lines={pickupLines}/>
           <button onClick={showAdd} id="add_button">
             Add a Pickup Line
           </button>
         </>}
-      {add && <Add lines={LINES} callback={() => setAdd(false)} />}
+      {add && <Add lines={pickupLines} callback={() => setAdd(false)} />}
     </div>
   );
 }

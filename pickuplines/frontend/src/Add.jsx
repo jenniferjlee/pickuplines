@@ -9,10 +9,18 @@ export default function Add({ lines, callback }) {
   const [selected, setSelected] = useState([]);
 
   const add = (event) => {
-    alert(pickupline + ' was added');
+    // console.log('selected');
+    // console.log(selected) ["cringy"] multiple categories can be selected tho
+    // console.log('pickupline');
+    // console.log(pickupline)
+
+    // post to firebase here
+    // for each selected category, post line
+    selected.map(category => addLine(category, pickupline)) 
+    
+    // alert + go back to display
     setPickupline('');
-    // post to firebase
-    // go back to display
+    alert(pickupline + ' was added 💖');
     callback(false);
   };
 
@@ -20,6 +28,24 @@ export default function Add({ lines, callback }) {
     const name = event.currentTarget.value;
     setPickupline(name)
   };
+
+  // POST request using fetch
+  const addLine = (category, line) => {
+    console.log('category is ' + category);
+    console.log('line is ' + line);
+
+    fetch('/addLine', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({category, line})
+    })
+      // ??
+      // .then(res => res.text())
+      // not keeping track of all pickup lines here tho?
+      // .then(id => setSongs([...songs, { name, artist, rating, id }]))        
+  }
 
   return (
 

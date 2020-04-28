@@ -9,7 +9,6 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
-
 const app = express();
 const port = 8080;
 // app.use(bodyParser.json());
@@ -20,15 +19,20 @@ const linesCollection = db.collection("pickuplines");
 
 app.get('/getLines', async (req, res) => {
   const lines = await linesCollection.get();
-  res.json(lines.docs.map((line) => ({ ...line.data(), id: line.id })));
+  res.json(lines.docs.map((line) => ({ ...line.data(), id: line.line })));
 });
 
-// might need to be modified 
-app.post('/createLine', async (req, res) => {
+// not done
+app.post('/addLine', async (req, res) => {
   const newLine = req.body;
+  // console.log('newLine is ' + newLine);
   const addedLine = await linesCollection.add(newLine);
   res.send(addedLine.id);
 });
 
+app.get('/getCategories', async (req, res) => {
+  const lines = await linesCollection.get();
+  res.json(lines.docs.map((line) => ({ ...line.data(), category: line.category})));
+});
 
 app.listen(port, () => console.log('Backend started'));
