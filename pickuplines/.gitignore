@@ -23,5 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 backend/service-account.json
+backend/config.js
 # ignore all folders and subfolders called node_modules
 node_modules/
