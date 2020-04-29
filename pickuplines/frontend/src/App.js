@@ -25,20 +25,22 @@ import Add from './Add.jsx';
 //   }
 // ];
 
-const [pickupLines, setPickupLines] = useState([]);
 
-const fetchLines = () => {
-  fetch('/getLines')
-    .then(res => res.json())
-    .then(json => setPickupLines(json));
-}
-useEffect(() => fetchLines(), []);
 
 
 
 // serves as parent component that passes information between the cateogry and display components
 function App() {
   // state contains which categories are checked off and whether the add form should be displayed
+  const [pickupLines, setPickupLines] = useState([]);
+
+  const fetchLines = () => {
+    fetch('/getLines')
+      .then(res => res.json())
+      .then(json => setPickupLines(json));
+  }
+  useEffect(() => fetchLines(), []);
+  
   const [add, setAdd] = useState(false);
   const [selected, setSelected] = useState([]);
 

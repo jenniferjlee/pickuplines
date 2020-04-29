@@ -19,7 +19,7 @@ const linesCollection = db.collection("pickuplines");
 
 app.get('/getLines', async (req, res) => {
   const lines = await linesCollection.get();
-  res.json(lines.docs.map((line) => ({ ...line.data(), id: line.line })));
+  res.json(lines.docs.map((line) => (line.data().line )));
 });
 
 // not done
@@ -32,7 +32,7 @@ app.post('/addLine', async (req, res) => {
 
 app.get('/getCategories', async (req, res) => {
   const lines = await linesCollection.get();
-  res.json(lines.docs.map((line) => ({ ...line.data(), category: line.category})));
+  res.json(lines.docs.map((line) => (line.data().category)));
 });
 
 app.listen(port, () => console.log('Backend started'));
