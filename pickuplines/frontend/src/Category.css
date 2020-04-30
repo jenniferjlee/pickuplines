@@ -1,6 +1,7 @@
 #cat_tags ul{
   list-style: none;
 }
+
 #cat_tags li{
   display: flex;
   margin-left: auto;
