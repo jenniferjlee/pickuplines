@@ -35,6 +35,8 @@ function App() {
     console.log("setAdd to true")
   };
 
+  // console.log(pickupLines)
+
   return (
     <div className="App">
       <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"></link>

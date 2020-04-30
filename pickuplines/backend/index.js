@@ -11,6 +11,7 @@ admin.initializeApp({
 const db = admin.firestore();
 const app = express();
 const port = 8080;
+// const port = 3000;
 // app.use(bodyParser.json());
 
 app.get('/', (_, resp) => resp.send('Hello World!'));
@@ -19,7 +20,7 @@ const linesCollection = db.collection("pickuplines");
 
 app.get('/getLines', async (req, res) => {
   const lines = await linesCollection.get();
-  res.json(lines.docs.map((line) => (line.data().line )));
+  res.json(lines.docs.map((line) => (line.data())));
 });
 
 // not done
