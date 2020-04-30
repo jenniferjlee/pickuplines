@@ -801,7 +801,7 @@ finalhandler@~1.1.2:
     statuses "~1.5.0"
     unpipe "~1.0.0"
 
-firebase-admin@^8.11.0:
+firebase-admin@^8.10.0, firebase-admin@^8.11.0:
   version "8.11.0"
   resolved "https://registry.yarnpkg.com/firebase-admin/-/firebase-admin-8.11.0.tgz#6292474c1270731655bc7c54a16499d54012fd0b"
   integrity sha512-DapjZBeilXIDJShlWIvcgPkX6HhOHCs5C9972ZDNpfm0aSSgWuwgVQz9vs9iTk0u+oQuqRjxcHveZki0qaHJ2w==
@@ -834,6 +834,13 @@ firebase@^7.14.2:
     "@firebase/remote-config" "0.1.19"
     "@firebase/storage" "0.3.32"
     "@firebase/util" "0.2.45"
+
+firestore-export-import@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/firestore-export-import/-/firestore-export-import-0.5.0.tgz#eba1ac891d765187b9fd52793ee82d6e8e69c378"
+  integrity sha512-bteoFjsp4k1z8oK15Gw46P7aRlaaPfCGknUyZmipBp+XP9lWGF4aczQ0ukPq7Lwp1HZVKsdPBPm6NbATluw8GA==
+  dependencies:
+    firebase-admin "^8.10.0"
 
 foreach@^2.0.5:
   version "2.0.5"

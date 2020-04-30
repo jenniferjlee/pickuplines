@@ -1,8 +1,12 @@
 #cat_tags ul{
   list-style: none;
 }
+
 #cat_tags li{
-  display: inline;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 160px;
   padding-left: 10px;
   padding-right: 10px;
 }

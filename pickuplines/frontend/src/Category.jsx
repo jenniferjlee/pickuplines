@@ -29,15 +29,17 @@ export default function Category({ cat, callback }) {
   return (
     <div>
       <div id="cat_tags">
+        <ul>
         {
           //functional programming
           cat.map((tag, i) => (
-            <>
+            <li>
               <input type="checkbox" id={i} name={tag} value={tag} onChange={() => handleChange(i)} />
               <label for={tag}> {tag} </label>
-            </>
+            </li>
           ))
         }
+        </ul>
       </div>
     </div>
   );
