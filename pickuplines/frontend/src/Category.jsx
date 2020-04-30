@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Category.css';
 
-// do individual checkbox magic here
+
 export default function Category({ cat, callback }) {
   
-  // console.log('length of cat:' + cat.length)
-
+  // TODO: fix this to be length of cat
   const [checked, setChecked] = useState([false, false, false,false,false,false, false, false,false,false]);
 
-  // console.log('checked here is ' + checked)
+  // console.log(cat)
 
   function changeCheck(check, index, i) {
     if (index === i) { return !check } else { return check };
@@ -23,6 +22,7 @@ export default function Category({ cat, callback }) {
     // FIX: checked doesn't get updated, why? so temp, using newChecks
     // console.log('checked: ' + checked);
     // callback
+    // console.log('handle:' + cat.filter((tag, i) => newChecks[i]));
     callback(cat.filter((tag, i) => newChecks[i]));
   };
 

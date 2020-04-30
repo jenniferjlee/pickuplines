@@ -3,7 +3,7 @@ import Category from './Category.jsx';
 
 // Add Component: contains input box for text as well as categories to check off and add button
 
-export default function Add({ lines, callback }) {
+export default function Add({ cat, callback }) {
 
   const [pickupline, setPickupline] = useState('');
   const [selected, setSelected] = useState([]);
@@ -16,7 +16,7 @@ export default function Add({ lines, callback }) {
     
     // alert + go back to display
     setPickupline('');
-    alert(pickupline + ' was added 💖');
+    alert(pickupline + ' was added 💖 (adding doesnt work yet)');
     callback(false);
   };
 
@@ -37,8 +37,7 @@ export default function Add({ lines, callback }) {
       },
       body: JSON.stringify({category, line})
     })
-      // ??
-      // .then(res => res.text())
+      .then(res => res.text())
       // .then(id => setSongs([...songs, { name, artist, rating, id }]))  
       // not keeping track of all pickup lines here tho?
       // .then(id => setSongs([...songs, { name, artist, rating, id }]))        
@@ -55,7 +54,7 @@ export default function Add({ lines, callback }) {
         onChange={changeDesc}
       />
 
-      <Category lines={lines} callback={selected => setSelected(selected)} />
+      <Category cat={cat} callback={selected => setSelected(selected)} />
 
       <button onClick={add} id="button">
         Submit

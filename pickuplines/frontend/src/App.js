@@ -11,6 +11,7 @@ function App() {
   const [add, setAdd] = useState(false);
   const [selected, setSelected] = useState([]);
   const [pickupLines, setPickupLines] = useState([]);
+  const [justLines, setJustLines] = useState([]);
 
   const [categories, setCategories] = useState([]);
   const noDupCategories = [...new Set(categories)];
@@ -21,6 +22,13 @@ function App() {
       .then(json => setPickupLines(json));
   }
   useEffect(() => fetchLines(), []);
+
+  const fetchJustLines = () => {
+    fetch('/getJustLines')
+      .then(res => res.json())
+      .then(json => setJustLines(json));
+  }
+  useEffect(() => fetchJustLines(), []);
 
   const fetchCategories = () => {
     fetch('/getCategories')
@@ -53,7 +61,7 @@ function App() {
             Add a Pickup Line
           </button>
         </>}
-      {add && <Add lines={pickupLines} callback={() => setAdd(false)} />}
+      {add && <Add cat={noDupCategories} callback={() => setAdd(false)} />}
     </div>
   );
 }

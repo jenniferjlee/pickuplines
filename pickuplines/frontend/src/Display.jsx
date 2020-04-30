@@ -10,9 +10,6 @@ export default function Display({ selected, lines }) {
     // GET all lines from the selected categories
     // random pickup line
     const posLines = [];
-
-    console.log('selected length ' + selected.length)
-    console.log('selected' + selected);
    
     lines.forEach((line) => {
       // temp FIX: if no categories are selected, add all lines
@@ -21,13 +18,9 @@ export default function Display({ selected, lines }) {
       }
       else if (selected.includes(line.category)) {
         posLines.push(line.line);
-        console.log('cat pushed:' + line.category)
-        console.log('pushed:' + line.line)
       }
     });
     
-    console.log(posLines);
-    console.log('? ' + posLines[Math.floor(Math.random() * posLines.length)]);
     setLine(posLines[Math.floor(Math.random() * posLines.length)]);
   };
   return (

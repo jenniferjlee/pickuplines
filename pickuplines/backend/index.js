@@ -23,10 +23,15 @@ app.get('/getLines', async (req, res) => {
   res.json(lines.docs.map((line) => (line.data())));
 });
 
+app.get('/getJustLines', async (req, res) => {
+  const lines = await linesCollection.get();
+  res.json(lines.docs.map((line) => (line.data().line)));
+});
+
 // not done
 app.post('/addLine', async (req, res) => {
   const newLine = req.body;
-  // console.log('newLine is ' + newLine);
+  console.log('newLine is ' + newLine);
   const addedLine = await linesCollection.add(newLine);
   res.send(addedLine.id);
 });
