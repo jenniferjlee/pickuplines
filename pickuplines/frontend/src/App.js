@@ -4,35 +4,16 @@ import Category from './Category.jsx';
 import Display from './Display.jsx';
 import Add from './Add.jsx';
 
-
-// would normally get data from backend here
-// const LINES = [
-//   {
-//     category: 'food',
-//     line: "Baby, if you were a fruit you'd be a Fineapple."
-//   },
-//   {
-//     category: 'food',
-//     line: "Your name must be Coca Cola, because you're so-da-licious"
-//   },
-//   {
-//     category: 'music',
-//     line: 'You had me at cello.'
-//   },
-//   {
-//     category: 'cringy',
-//     line: "Do you have a map? I just keep getting lost in your eyes."
-//   }
-// ];
-
-
-
-
-
 // serves as parent component that passes information between the cateogry and display components
 function App() {
+
   // state contains which categories are checked off and whether the add form should be displayed
+  const [add, setAdd] = useState(false);
+  const [selected, setSelected] = useState([]);
   const [pickupLines, setPickupLines] = useState([]);
+
+  const [categories, setCategories] = useState([]);
+  const noDupCategories = [...new Set(categories)];
 
   const fetchLines = () => {
     fetch('/getLines')
@@ -40,9 +21,14 @@ function App() {
       .then(json => setPickupLines(json));
   }
   useEffect(() => fetchLines(), []);
-  
-  const [add, setAdd] = useState(false);
-  const [selected, setSelected] = useState([]);
+
+  const fetchCategories = () => {
+    fetch('/getCategories')
+      .then(res => res.json())
+      .then(json => setCategories(json));
+  }
+  useEffect(() => fetchCategories(), []);
+
 
   const showAdd = (event) => {
     setAdd(true);
@@ -55,11 +41,11 @@ function App() {
       <h1> <span role="img" aria-label="heart"> 💘 </span> 
       Find Your Next Pickup Line! 
       <span role="img" aria-label="heart"> 💘 </span> </h1>
-      
+
       {/* conditional rendering */}
       {!add &&
         <>
-          <Category lines={pickupLines} callback={selected => setSelected(selected)} />
+          <Category cat={noDupCategories} callback={selected => setSelected(selected)} />
           <Display selected={selected} lines={pickupLines}/>
           <button onClick={showAdd} id="add_button">
             Add a Pickup Line

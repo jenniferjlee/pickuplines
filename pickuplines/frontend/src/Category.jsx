@@ -2,53 +2,50 @@ import React, { useState, useEffect } from 'react';
 import './Category.css';
 
 // do individual checkbox magic here
-export default function Category({ lines, callback }) {
-  // GET list of all available categories using the data provided and categories = ...
+export default function Category({ cat, callback }) {
   
-  const [categories, setCategories] = useState([]);
-  // const categories = ['food', 'music', 'cringy'];
+  console.log('length of cat:' + cat.length)
 
   const allUnchecked = [];
-  for (var i = 0; i < categories.length; i++) allUnchecked.push(false);
+  for (var i = 0; i < cat.length; i++){
+    allUnchecked.push(false);
+  } 
+  console.log('unchecked is ' + allUnchecked);
+
   const [checked, setChecked] = useState(allUnchecked);
 
+  console.log('checked here is ' + checked)
+
   function changeCheck(check, index, i) {
+    console.log('check is ' + check);
+    console.log('index is ' + index);
+    console.log('i is ' + i);
+
     if (index === i) { return !check } else { return check };
   }
 
   const handleChange = (i) => {
-    console.log('category:' + categories[i])
+    console.log('selected category:' + cat[i])
+    console.log('checked is' + checked)
     const newChecks = checked.map((check, index) => changeCheck(check, index, i));
+    console.log('here')
+    
     setChecked(newChecks);
     // FIX: checked doesn't get updated, why? so temp, using newChecks
-    console.log('checked: ' + checked);
+    // console.log('checked: ' + checked);
     // callback
-    callback(categories.filter((tag, i) => newChecks[i]));
+    callback(cat.filter((tag, i) => newChecks[i]));
   };
-
-  const fetchCategories = () => {
-    fetch('/getCategories')
-      .then(res => res.json())
-      .then(json => setCategories(json));
-  }
-  
-  useEffect(() => fetchCategories(), []);
-
 
   return (
     <div>
-      {
-        console.log('categories are:' + categories)
-      }
       <div id="cat_tags">
         {
           //functional programming
-          categories.map((tag, i) => (
+          cat.map((tag, i) => (
             <>
-              <input type="checkbox" id={tag} name={tag} value={tag} onChange={() => handleChange(i)} />
+              <input type="checkbox" id={i} name={tag} value={tag} onChange={() => handleChange(i)} />
               <label for={tag}> {tag} </label>
-              {/*<button type="button" onClick={() => removeTag(i)}>Remove</button> */}
-              {/* onClick={removeTag(i)} doesnt work */}
             </>
           ))
         }

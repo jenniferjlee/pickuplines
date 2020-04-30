@@ -9,13 +9,9 @@ export default function Add({ lines, callback }) {
   const [selected, setSelected] = useState([]);
 
   const add = (event) => {
-    // console.log('selected');
-    // console.log(selected) ["cringy"] multiple categories can be selected tho
-    // console.log('pickupline');
-    // console.log(pickupline)
 
-    // post to firebase here
-    // for each selected category, post line
+    // console.log('selected:' + selected)
+
     selected.map(category => addLine(category, pickupline)) 
     
     // alert + go back to display
@@ -43,6 +39,7 @@ export default function Add({ lines, callback }) {
     })
       // ??
       // .then(res => res.text())
+      // .then(id => setSongs([...songs, { name, artist, rating, id }]))  
       // not keeping track of all pickup lines here tho?
       // .then(id => setSongs([...songs, { name, artist, rating, id }]))        
   }
