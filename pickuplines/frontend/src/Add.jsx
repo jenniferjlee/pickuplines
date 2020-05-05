@@ -35,12 +35,9 @@ export default function Add({ cat, callback }) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({category, line})
+      body: JSON.stringify({'category': category, 'line': line})
     })
-      .then(res => res.text())
-      // .then(id => setSongs([...songs, { name, artist, rating, id }]))  
-      // not keeping track of all pickup lines here tho?
-      // .then(id => setSongs([...songs, { name, artist, rating, id }]))        
+      .then(res => res.json())    
   }
 
   return (
