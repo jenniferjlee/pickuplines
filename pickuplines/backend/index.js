@@ -17,25 +17,25 @@ app.get('/', (_, resp) => resp.send('Hello World!'));
 
 const linesCollection = db.collection("pickuplines");
 
-app.get('/getLines', async (req, res) => {
+app.get('https://trendspickupline.herokuapp.com/', async (req, res) => {
   const lines = await linesCollection.get();
   res.json(lines.docs.map((line) => (line.data())));
 });
 
-app.get('/getJustLines', async (req, res) => {
+app.get('https://trendspickupline.herokuapp.com/', async (req, res) => {
   const lines = await linesCollection.get();
   res.json(lines.docs.map((line) => (line.data().line)));
 });
 
-app.post('/addLine', async (req, res) => {
+app.post('https://trendspickupline.herokuapp.com/', async (req, res) => {
   const newLine = req.body;
   const addedLine = await linesCollection.add(newLine);
   res.send(addedLine.id);
 });
 
-app.get('/getCategories', async (req, res) => {
+app.get('https://trendspickupline.herokuapp.com/', async (req, res) => {
   const lines = await linesCollection.get();
   res.json(lines.docs.map((line) => (line.data().category)));
 });
 
-app.listen(port, () => console.log('Backend started'));
+app.listen(process.env.port || port, () => console.log('Backend started'));

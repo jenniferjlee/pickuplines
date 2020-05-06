@@ -11,27 +11,19 @@ function App() {
   const [add, setAdd] = useState(false);
   const [selected, setSelected] = useState([]);
   const [pickupLines, setPickupLines] = useState([]);
-  const [justLines, setJustLines] = useState([]);
 
   const [categories, setCategories] = useState([]);
   const noDupCategories = [...new Set(categories)];
 
   const fetchLines = () => {
-    fetch('/getLines')
+    fetch('https://trendspickupline.herokuapp.com/')
       .then(res => res.json())
       .then(json => setPickupLines(json));
   }
   useEffect(() => fetchLines(), []);
 
-  const fetchJustLines = () => {
-    fetch('/getJustLines')
-      .then(res => res.json())
-      .then(json => setJustLines(json));
-  }
-  useEffect(() => fetchJustLines(), []);
-
   const fetchCategories = () => {
-    fetch('/getCategories')
+    fetch('https://trendspickupline.herokuapp.com/')
       .then(res => res.json())
       .then(json => setCategories(json));
   }
@@ -43,7 +35,6 @@ function App() {
     console.log("setAdd to true")
   };
 
-  // console.log(pickupLines)
 
   return (
     <div className="App">

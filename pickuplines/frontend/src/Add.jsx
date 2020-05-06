@@ -23,7 +23,7 @@ export default function Add({ cat, callback }) {
   // POST request using fetch
   const addLine = (category, line) => {
 
-    fetch('/addLine', {
+    fetch('https://trendspickupline.herokuapp.com/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

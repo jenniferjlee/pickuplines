@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Category.css';
 
 
@@ -6,8 +6,6 @@ export default function Category({ cat, callback }) {
   
   // TODO: fix this to be length of cat
   const [checked, setChecked] = useState([false, false, false,false,false,false, false, false,false,false]);
-
-  // console.log(cat)
 
   function changeCheck(check, index, i) {
     if (index === i) { return !check } else { return check };
@@ -33,9 +31,9 @@ export default function Category({ cat, callback }) {
         {
           //functional programming
           cat.map((tag, i) => (
-            <li>
-              <input type="checkbox" key= {i} id={i} name={tag} value={tag} onChange={() => handleChange(i)} />
-              <label for={tag}> {tag} </label>
+            <li key = {i}>
+              <input type="checkbox" id={i} name={tag} value={tag} onChange={() => handleChange(i)} />
+              <label htmlFor={tag}> {tag} </label>
             </li>
           ))
         }
