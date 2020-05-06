@@ -1,7 +1,7 @@
 const admin = require('firebase-admin');
 const serviceAccount = require('./service-account.json');
 const express = require('express');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -11,8 +11,7 @@ admin.initializeApp({
 const db = admin.firestore();
 const app = express();
 const port = 8080;
-// const port = 3000;
-// app.use(bodyParser.json());
+app.use(express.json());
 
 app.get('/', (_, resp) => resp.send('Hello World!'));
 
@@ -28,10 +27,8 @@ app.get('/getJustLines', async (req, res) => {
   res.json(lines.docs.map((line) => (line.data().line)));
 });
 
-// not done
 app.post('/addLine', async (req, res) => {
   const newLine = req.body;
-  console.log('newLine is ' + newLine);
   const addedLine = await linesCollection.add(newLine);
   res.send(addedLine.id);
 });

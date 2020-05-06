@@ -9,14 +9,9 @@ export default function Add({ cat, callback }) {
   const [selected, setSelected] = useState([]);
 
   const add = (event) => {
-
-    // console.log('selected:' + selected)
-
-    selected.map(category => addLine(category, pickupline)) 
-    
-    // alert + go back to display
+    selected.map(category => addLine(category, pickupline))     
     setPickupline('');
-    alert(pickupline + ' was added 💖 (adding doesnt work yet)');
+    alert(pickupline + ' was added 💖');
     callback(false);
   };
 
@@ -27,17 +22,15 @@ export default function Add({ cat, callback }) {
 
   // POST request using fetch
   const addLine = (category, line) => {
-    console.log('category is ' + category);
-    console.log('line is ' + line);
 
     fetch('/addLine', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({'category': category, 'line': line})
+      body: JSON.stringify({category: category, line: line})
     })
-      .then(res => res.json())    
+      .then(res => res.json)    
   }
 
   return (
