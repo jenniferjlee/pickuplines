@@ -1,7 +1,7 @@
 const admin = require('firebase-admin');
 const serviceAccount = require('./service-account.json');
 const express = require('express');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const cors = require('cors');
 
 admin.initializeApp({
@@ -19,25 +19,29 @@ app.get('/', (_, resp) => resp.send('Hello World!'));
 
 const linesCollection = db.collection("pickuplines");
 
-app.get('https://trendspickupline.herokuapp.com/getLines', async (req, res) => {
+app.get('/getLines', async (req, res) => {
   const lines = await linesCollection.get();
+  // not sure if this is right
   res.json(lines.docs.map((line) => (line.data())));
+  // res.send(data);
 });
 
-app.get('https://trendspickupline.herokuapp.com/getJustLines', async (req, res) => {
+app.get('/getJustLines', async (req, res) => {
   const lines = await linesCollection.get();
   res.json(lines.docs.map((line) => (line.data().line)));
+  // res.send(data);
 });
 
-app.post('https://trendspickupline.herokuapp.com/addLine', async (req, res) => {
+app.post('/addLine', async (req, res) => {
   const newLine = req.body;
   const addedLine = await linesCollection.add(newLine);
   res.send(addedLine.id);
 });
 
-app.get('https://trendspickupline.herokuapp.com//getCategories', async (req, res) => {
+app.get('/getCategories', async (req, res) => {
   const lines = await linesCollection.get();
   res.json(lines.docs.map((line) => (line.data().category)));
+  // res.send(data);
 });
-
-app.listen(process.env.port || port, () => console.log('Backend started'));
+// process.env.port
+app.listen(process.env.PORT || port, () => console.log('Backend started'));
