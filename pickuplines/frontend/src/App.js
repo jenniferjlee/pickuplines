@@ -24,8 +24,12 @@ function App() {
 
   const fetchCategories = () => {
     fetch('https://trendspickupline.herokuapp.com/getCategories')
-      .then(res => res.json())
-      .then(json => setCategories(json));
+      .then(res => {
+        return res.json()
+      })
+      .then(json => {
+        setCategories(json)
+      });
   }
   useEffect(() => fetchCategories(), []);
 
