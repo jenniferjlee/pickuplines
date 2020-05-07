@@ -16,14 +16,14 @@ function App() {
   const noDupCategories = [...new Set(categories)];
 
   const fetchLines = () => {
-    fetch('https://trendspickupline.herokuapp.com/')
+    fetch('https://trendspickupline.herokuapp.com/getLines')
       .then(res => res.json())
       .then(json => setPickupLines(json));
   }
   useEffect(() => fetchLines(), []);
 
   const fetchCategories = () => {
-    fetch('https://trendspickupline.herokuapp.com/')
+    fetch('https://trendspickupline.herokuapp.com/getCategories')
       .then(res => res.json())
       .then(json => setCategories(json));
   }
