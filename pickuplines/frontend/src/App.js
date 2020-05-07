@@ -3,6 +3,7 @@ import './App.css';
 import Category from './Category.jsx';
 import Display from './Display.jsx';
 import Add from './Add.jsx';
+import Illustration from './illustration.png';
 
 // serves as parent component that passes information between the cateogry and display components
 function App() {
@@ -47,6 +48,8 @@ function App() {
       Find Your Next Pickup Line! 
       <span role="img" aria-label="heart"> 💘 </span> </h1>
 
+      <img src={Illustration} alt="Illustration" id="image" />
+
       {/* conditional rendering */}
       {!add &&
         <>
@@ -57,7 +60,10 @@ function App() {
           </button>
         </>}
       {add && <Add cat={noDupCategories} callback={() => setAdd(false)} />}
+
+      <p><a href="https://www.ls.graphics/whoosh">Image Source</a></p>
     </div>
+    
   );
 }
 

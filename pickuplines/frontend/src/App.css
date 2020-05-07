@@ -71,3 +71,9 @@
 h1 {
   color:#DE6C83;
 }
+
+#image{
+  text-align: center;
+  width: 450px;
+  height: auto;
+}
