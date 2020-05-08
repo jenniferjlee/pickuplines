@@ -4,6 +4,7 @@ import Category from './Category.jsx';
 import Display from './Display.jsx';
 import Add from './Add.jsx';
 import Illustration from './illustration.png';
+import Gif from './giphy.gif';
 
 // serves as parent component that passes information between the cateogry and display components
 function App() {
@@ -44,11 +45,15 @@ function App() {
   return (
     <div className="App">
       <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"></link>
+      <span>
+        <img src={Gif} alt="Gif" id="image" />
+        <img src={Illustration} alt="Illustration" id="image" />
+        <img src={Gif} alt="Gif" id="image" />
+      </span>
+      
       <h1> <span role="img" aria-label="heart"> 💘 </span> 
       Find Your Next Pickup Line! 
       <span role="img" aria-label="heart"> 💘 </span> </h1>
-
-      <img src={Illustration} alt="Illustration" id="image" />
 
       {/* conditional rendering */}
       {!add &&
