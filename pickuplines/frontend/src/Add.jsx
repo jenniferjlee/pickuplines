@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Category from './Category.jsx';
 
+
 // Add Component: contains input box for text as well as categories to check off and add button
 
 export default function Add({ cat, callback }) {
@@ -9,7 +10,7 @@ export default function Add({ cat, callback }) {
   const [selected, setSelected] = useState([]);
 
   const add = (event) => {
-    selected.map(category => addLine(category, pickupline))     
+    selected.map(category => addLine(category, pickupline))
     setPickupline('');
     alert(pickupline + ' was added 💖');
     callback(false);
@@ -28,20 +29,22 @@ export default function Add({ cat, callback }) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({category: category, line: line})
+      body: JSON.stringify({ category: category, line: line })
     })
-      .then(res => res.json)    
+      .then(res => res.json)
   }
 
   return (
 
     <div>
       Add a pick up line:
-      {' '}
-      <input
+      <br />
+      <textarea
         type="text"
         value={pickupline}
         onChange={changeDesc}
+        rows="4"
+        cols="50"
       />
 
       <Category cat={cat} callback={selected => setSelected(selected)} />

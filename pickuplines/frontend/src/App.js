@@ -5,6 +5,9 @@ import Display from './Display.jsx';
 import Add from './Add.jsx';
 import Illustration from './illustration.png';
 import Gif from './giphy.gif';
+import Authenticated from './Authenticated';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
 
 // serves as parent component that passes information between the cateogry and display components
 function App() {
@@ -50,25 +53,29 @@ function App() {
         <img src={Illustration} alt="Illustration" id="image" />
         <img src={Gif} alt="Gif" id="image" />
       </span>
-      
-      <h1> <span role="img" aria-label="heart"> 💘 </span> 
-      Find Your Next Pickup Line! 
+
+      <h1> <span role="img" aria-label="heart"> 💘 </span>
+        Find Your Next Pickup Line!
       <span role="img" aria-label="heart"> 💘 </span> </h1>
 
-      {/* conditional rendering */}
-      {!add &&
-        <>
-          <Category cat={noDupCategories} callback={selected => setSelected(selected)} />
-          <Display selected={selected} lines={pickupLines}/>
-          <button onClick={showAdd} id="add_button">
-            Add a Pickup Line
+      <Authenticated>
+        {/* conditional rendering */}
+        {!add &&
+          <>
+            <Category cat={noDupCategories} callback={selected => setSelected(selected)} />
+            <Display selected={selected} lines={pickupLines} />
+            <button onClick={showAdd} id="add_button">
+              Add a Pickup Line
           </button>
-        </>}
-      {add && <Add cat={noDupCategories} callback={() => setAdd(false)} />}
+          </>}
+        {add && <Add cat={noDupCategories} callback={() => setAdd(false)} />}
+        <br />
+        <button id="signout" onClick={() => firebase.auth().signOut()} > Sign Out </button>
+      </Authenticated>
 
-      <p><a href="https://www.ls.graphics/whoosh">Image Source</a></p>
+      <p><a href="https://www.ls.graphics/whoosh" class="source">Image Source</a></p>
     </div>
-    
+
   );
 }
 

@@ -3,9 +3,9 @@ import './Category.css';
 
 
 export default function Category({ cat, callback }) {
-  
+
   // TODO: fix this to be length of cat
-  const [checked, setChecked] = useState([false, false, false,false,false,false, false, false,false,false]);
+  const [checked, setChecked] = useState([false, false, false, false, false, false, false, false, false, false]);
 
   function changeCheck(check, index, i) {
     if (index === i) { return !check } else { return check };
@@ -15,7 +15,7 @@ export default function Category({ cat, callback }) {
     // console.log('selected category:' + cat[i])
     // console.log('checked is' + checked)
     const newChecks = checked.map((check, index) => changeCheck(check, index, i));
-    
+
     setChecked(newChecks);
     // FIX: checked doesn't get updated, why? so temp, using newChecks
     // console.log('checked: ' + checked);
@@ -28,15 +28,15 @@ export default function Category({ cat, callback }) {
     <div>
       <div id="cat_tags">
         <ul>
-        {
-          //functional programming
-          cat.map((tag, i) => (
-            <li key = {i}>
-              <input type="checkbox" id={i} name={tag} value={tag} onChange={() => handleChange(i)} />
-              <label htmlFor={tag}> {tag} </label>
-            </li>
-          ))
-        }
+          {
+            //functional programming
+            cat.map((tag, i) => (
+              <li key={i}>
+                <input type="checkbox" id={i} name={tag} value={tag} onChange={() => handleChange(i)} />
+                <label htmlFor={tag}> {tag} </label>
+              </li>
+            ))
+          }
         </ul>
       </div>
     </div>

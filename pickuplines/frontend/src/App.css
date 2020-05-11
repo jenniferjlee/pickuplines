@@ -64,6 +64,19 @@
   color: white;
 }
 
+#signout{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'Karla', sans-serif;
+  font-size: medium;
+  background-color: #FFFFE0; 
+}
+
+#signout:hover {
+  background-color:#FFFF33; 
+}
+
+
 #line{
   font-size: xx-large;
 }
@@ -74,6 +87,22 @@ h1 {
 
 #image{
   text-align: center;
-  width: 200px;
+  width: 150px;
   height: auto;
+}
+
+@media screen and (max-width: 700px) {
+  #image{
+    width: 30%;
+  }
+}
+
+#line {
+  width: 70%;
+  margin: auto;
+}
+
+.source {
+  color: grey;
+  font-size: 10px;
 }
